@@ -2,6 +2,16 @@ from enum import Enum
 from deck import Deck
 
 class Result(Enum):
+    """
+    Enum representing possible outcomes of a card comparison.
+
+    Used to standardise result values passed between functions for clarity and safety.
+
+    Members:
+        HIGHER (int): Indicates the new card is higher in value.
+        DRAW (int): Indicates both cards have equal value.
+        LOWER (int): Indicates the new card is lower in value.
+    """
     HIGHER = 1
     DRAW = 2
     LOWER = 3
@@ -15,6 +25,11 @@ class Game:
         self.score = 0
 
     def start_game(self):
+        """
+        Sets up the game, called at the start of the game and when restarting
+        Resets deck, and configures deck with shuffled cards
+        :return: None
+        """
         self.deck.reset_cards()
         self.deck.generate_deck()
         self.deck.shuffle()
@@ -22,9 +37,21 @@ class Game:
         self.current_card = None
 
 
-
     def handle_guess(self, guess):
+        """
+        Evaluate the player's guess against the actual card comparison result.
+
+        Calls compare() to determine whether the new card is higher, lower, or equal in value.
+        Updates the score and prints feedback accordingly.
+
+        :param: guess (str): Player's input, "h" for higher or "l" for lower.
+
+        :return:
+            bool: True if the guess is correct or the result is a draw; False otherwise.
+        """
+        # Answer by comparing the two cards: Higher, Lower, Draw
         answer = self.compare()
+
         # If cards are equal value - keep playing, no change in score
         if answer == Result.DRAW:
             print("It's a draw! - no change in points")
@@ -43,6 +70,14 @@ class Game:
             return False
 
     def compare(self):
+        """
+        Compare the current card to the previous card and determine the result.
+
+        Draws a new card from the deck, then compares its value against the previous card's value.
+
+        :return:
+            Result: One of Result.HIGHER, Result.DRAW, or Result.LOWER
+        """
         self.current_card = self.deck.draw()
         if self.current_card.get_comparison_value() > self.previous_card.get_comparison_value():
             return Result.HIGHER
@@ -52,18 +87,42 @@ class Game:
             return Result.LOWER
 
     def next_round(self):
+        """
+        Updates the previous card to the current card and draws a new card from the deck
+        to become the new current card.
+
+        :return: None
+        """
         self.previous_card = self.current_card
         self.current_card = self.deck.draw()
 
     def handle_input(self, action):
+        """
+        Prompt and validate user input based on game state.
+
+        For in-game guesses, requests whether the next card is higher or lower
+        than the previous card and returns a normalized response.
+        At end of game, asks whether the player wants to restart or quit.
+
+        :param:
+            action (str): "GUESS" to request higher/lower input,
+                          "END" to request restart/quit decision.
+
+        :return:
+            str:
+                - "h" or "l" for a valid guess input.
+                - "AGAIN" if the player chooses to restart.
+                - "END" if the player chooses to quit.
+        """
         valid_input = False
+        inputs = ("h" , "l")
         while not valid_input:
             if action == "GUESS":
                 guess = input(f"Guess if the next card is higher (H/h) or lower (L/l) "
                               f"than {self.previous_card}: ")
                 guess = guess.strip().lower()
 
-                if guess == "h" or guess == "l":
+                if guess in inputs:
                     return guess
                 else:
                     print("Invalid input. Please try again.\n")
@@ -76,8 +135,25 @@ class Game:
                     return "AGAIN"
                 else:
                     print("Invalid input. Please try again.\n")
+        return None
 
     def game_loop(self):
+        """
+        Run the main game loop.
+
+        Continuously prompts the player to guess whether the next card will be higher or lower.
+        Ends when the player guesses incorrectly or the deck is exhausted.
+        After a loss, prompts the player to restart or quit.
+
+        Calls:
+            start_game() – initializes or restarts game state.
+            handle_input() – retrieves player input for guesses and restart choice.
+            handle_guess() – checks correctness of guess.
+            next_round() – advances game state after a correct guess.
+
+        :return:
+            None
+        """
         self.start_game()
         correct = True
         while correct and not self.deck.is_empty():
@@ -96,12 +172,3 @@ class Game:
                     correct = True
                 else:
                     print("Quitting game")
-
-
-
-
-
-
-
-
-

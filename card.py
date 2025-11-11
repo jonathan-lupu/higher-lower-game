@@ -8,9 +8,8 @@ class Card:
 
     def set_value(self, rank : str):
         """Sets internal value to int for comparison
-            Arguments:
-                rank : str - rank of the card e.g. Ace, 1, 3, King
-            Returns: None - sets attribute
+            :param: rank : str - rank of the card e.g. Ace, 1, 3, King
+            :return: None - sets attribute
             """
         match rank:
             case "King":
@@ -26,9 +25,18 @@ class Card:
 
 
     def __str__(self):
+        """
+        Returns string representation of card
+        :return: str in format of "rank" of "suit" e.g. Ace of Hearts
+        """
         return f"{self.rank} of {self.suit}"
 
     def get_comparison_value(self):
+        """
+        Return the internal value of the card to be used for comparison
+
+        :return: int: internal comparison value
+        """
         return self.value
 
 
