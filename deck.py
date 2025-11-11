@@ -16,6 +16,8 @@ class Deck:
             for rank in ranks:
                 self.cards.append(Card(suit, rank))
 
+        print(f"cards have been generated there are {len(self.cards)} cards in the deck!")
+
     def shuffle(self):
         for i in range(len(self.cards)-1 ,0, -1):
             j = random.randint(0,i + 1)
