@@ -26,6 +26,15 @@ class GameUI:
         )
         title.pack(pady=10)
 
+        high_score_label = tk.Label(
+            self.frame,
+            text=f"High Score: {self.game.high_score}",
+            fg=self.orange_colour,
+            bg=self.bg_colour,
+            font=("Consolas", 16),
+        )
+        high_score_label.pack(pady=10)
+
         # Help button
         help_btn = tk.Button(
             self.frame,
@@ -106,6 +115,9 @@ class GameUI:
             self.lower_btn.config(state="disabled")
             self.result.config(text=msg)
 
+            # sets highscore
+            self.game.set_high_score()
+
             tk.Button(
                 self.frame,
                 text="Restart Game",
@@ -137,12 +149,26 @@ class GameUI:
         y = self.master.winfo_rooty()
 
         overlay.geometry(f"{w}x{h}+{x}+{y}")
-        dim = tk.Frame(overlay, bg="#000000")
-        # root.wm_attributes("-transparentcolor", "#000000")
 
+        dim = tk.Frame(overlay, bg=self.bg_colour)
+        dim.place(relwidth=1, relheight=1)
+
+        panel = tk.Frame(overlay, bg="white", padx=10, pady=10)
+        panel.place(relx=0.5, rely=0.5, anchor="center")
+
+        tk.Label(panel, text="How to Play:", font=("Consolas", 14), bg="white", fg=self.orange_colour).pack(anchor="w")
+        tk.Label(panel, text="""
+        • Using buttons, make a guess whether the next card will be higher or lower
+        • If the guess is correct, rewarded a point
+        • A tie results in no change in score
+        • If the guess was incorrect, then Game Over
+        • Note: In this implementation of the game Ace is considered as a 1
+        """, bg="white", fg=self.orange_colour, justify="left").pack(anchor="e", pady=5)
+
+        tk.Button(panel, text="Close", command=overlay.destroy).pack(pady=10, side="bottom")
 
 root = tk.Tk()
-root.geometry("400x350")
+root.geometry("500x400")
 root.resizable(width=False, height=False)
 GameUI(root)
 root.mainloop()

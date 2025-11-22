@@ -23,6 +23,16 @@ class Game:
         self.current_card = None
         self.previous_card = None
         self.score = 0
+        self.high_score = 0
+
+        try:
+            with open("highscore.txt", "r") as highscore_file:
+                self.high_score = int(highscore_file.read())
+        except FileNotFoundError:
+            # handle the missing file - create the file
+            with open("highscore.txt", "w") as f:
+                pass
+            self.high_score = 0
 
     def start_game(self):
         """
@@ -95,6 +105,16 @@ class Game:
         """
         self.previous_card = self.current_card
         self.current_card = self.deck.draw()
+
+    def set_high_score(self):
+        """
+        Updates the high score saved in highscore.txt if the score achieved is higher than saved highscore.
+        :return: None
+        """
+        if self.score > self.high_score:
+            self.high_score = self.score
+        with open(f"highscore.txt", "w") as highscore_file:
+            highscore_file.write(str(self.high_score))
 
     def handle_input(self, action):
         """
