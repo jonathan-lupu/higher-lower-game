@@ -86,3 +86,12 @@ The Game class holds crucial game logic functions, including:
 
 ## Additional Features
 The game uses a GUI which allows the user to have straightforward and streamlined interactions with the game, making it more enjoyable to play. It includes a helpful overlay that provides clear instructions on playing 'Higher or Lower', making it accessible to new players. Lastly, the game also has the ability to store the historical high score, encouraging players to beat previous records and adding a competitive edge that boosts replay value.
+
+## Future Improvements
+New features could be created to make the game more enjoyable and increase its replayability, such as providing different game modes, for example, guessing the next suit along with higher or lower. 
+
+There are some improvements that could be made to improve the game.
+Such improvements include:
+- Usability: Improving error handling to ensure players can keep playing in the face of errors, and introducing key bindings to allow for faster and smoother gameplay.
+- Accessibility: Improving contrast between colours, making scalable text to allow for improved readability, and screen-reader compatibility to allow visually impaired users to play. 
+- Tamper-resistant data: Ensuring high score text file cannot be tampered with and shows false scores.
