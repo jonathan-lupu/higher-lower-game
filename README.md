@@ -4,6 +4,17 @@
   <img src="game-overview.png" width="300">
 </p>
 
+## Prerequisite 
+- Python3, Tested with version 3.13.5
+### Packages
+- Tkinter for the GUI, tested using TKinter 8.6.16
+
+**For MacOS**
+```
+brew install tcl-tk
+brew install python-tk
+```
+
 ## How to start
 1. Clone the repository
 2. Enter the project directory
@@ -52,7 +63,7 @@ The following diagram was created with CLI implementation in mind; therefore, so
 
 
 <p align="center">
-  <img src="higher-lower-design.png" width="300">
+  <img src="higher-lower-class-diagram.png" width="600">
 </p>
 
 ### Card
