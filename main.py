@@ -159,8 +159,8 @@ class GameUI:
 
         tk.Label(panel, text="How to Play:", font=("Consolas", 14), bg="white", fg=self.orange_colour).pack(anchor="w")
         tk.Label(panel, text="""
-        • Using buttons, make a guess whether the next card will be higher or lower
-        • If the guess is correct, rewarded a point
+        • Using the buttons, make a guess if the next card will be higher or lower
+        • If the guess is correct, you get a point
         • A tie results in no change in score
         • If the guess was incorrect, then Game Over
         • Note: In this implementation of the game Ace is considered as a 1

@@ -76,7 +76,7 @@ class Game:
             msg = f"Correct guess!"
             return True,msg
         else:
-            msg = "Incorrect guess!"
+            msg = f"Incorrect guess! The card was {self.current_card}"
             return False, msg
 
     def compare_cards(self):
