@@ -12,19 +12,17 @@ class Card:
             :param: rank : str - rank of the card e.g. Ace, 1, 3, King
             :return: None - sets attribute
         """
-
-        match rank:
-            case "King":
-                self.value = 13
-            case "Queen":
-                self.value = 12
-            case "Jack":
-                self.value = 11
-            case "Ace":
-                self.value = 1
-            case _:
-                self.value = int(rank)
-
+        # Not using match-case due to maximise python version compatability
+        if rank == "King":
+            self.value = 13
+        elif rank == "Queen":
+            self.value = 12
+        elif rank == "Jack":
+            self.value = 11
+        elif rank == "Ace":
+            self.value = 1
+        else:
+            self.value = int(rank)
 
     def __str__(self):
         """
