@@ -1,5 +1,6 @@
 import tkinter as tk
-import tkinter.font as tkFont
+from tkinter.constants import SUNKEN
+
 from game import Game
 
 class GameUI:
@@ -21,7 +22,7 @@ class GameUI:
             text="Higher or Lower",
             fg="white",
             bg=self.bg_colour,
-            font=("Consolas", 16)
+            font=("Consolas", 16),
         )
         title.pack(pady=10)
 
@@ -35,9 +36,11 @@ class GameUI:
         )
         self.card_label.pack(pady=20)
 
+        # Higher/Lower Buttons
         btn_frame = tk.Frame(self.frame, bg=self.bg_colour)
         btn_frame.pack(pady=10)
 
+        # Higher/Lower buttons
         self.higher_btn = tk.Button(
             btn_frame,
             text="Higher",
@@ -45,6 +48,7 @@ class GameUI:
             command=lambda: self.make_guess("higher")
         )
         self.higher_btn.pack(side="left", padx=10)
+
 
         self.lower_btn = tk.Button(
             btn_frame,
@@ -54,6 +58,7 @@ class GameUI:
         )
         self.lower_btn.pack(side="left", padx=10)
 
+        # Will display correct/incorrect
         self.result = tk.Label(
             self.frame,
             text="Make a guess",
@@ -63,6 +68,7 @@ class GameUI:
         )
         self.result.pack(pady=10)
 
+        # Displays the score
         self.score_label = tk.Label(
             self.frame,
             text="Score: 0",
@@ -109,7 +115,7 @@ class GameUI:
 
 
 root = tk.Tk()
-root.geometry("300x300")
+root.geometry("400x300")
 root.resizable(width=False, height=False)
 GameUI(root)
 root.mainloop()
