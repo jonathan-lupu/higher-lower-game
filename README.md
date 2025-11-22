@@ -5,7 +5,7 @@
 </p>
 
 ## Prerequisite 
-- Python3, Tested with version 3.13.5
+- Python3, tested with version 3.13.5
 ### Packages
 - Tkinter for the GUI, tested using TKinter 8.6.16
 
