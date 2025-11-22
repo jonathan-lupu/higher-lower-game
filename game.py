@@ -1,5 +1,5 @@
-from enum import Enum
 from deck import Deck
+from enum import Enum
 
 class Result(Enum):
     """
