@@ -103,6 +103,7 @@ class Game:
 
         :return: None
         """
+        self.set_high_score()
         self.previous_card = self.current_card
         self.current_card = self.deck.draw()
 

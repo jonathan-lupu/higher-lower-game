@@ -26,14 +26,14 @@ class GameUI:
         )
         title.pack(pady=10)
 
-        high_score_label = tk.Label(
+        self.high_score_label = tk.Label(
             self.frame,
             text=f"High Score: {self.game.high_score}",
             fg=self.orange_colour,
             bg=self.bg_colour,
             font=("Consolas", 16),
         )
-        high_score_label.pack(pady=10)
+        self.high_score_label.pack(pady=10)
 
         # Help button
         help_btn = tk.Button(
@@ -107,6 +107,7 @@ class GameUI:
             # Guess is correct and exits function
             self.result.config(text=msg)
             self.game.next_round()
+            self.high_score_label.config(text=f"High Score: {self.game.high_score}")
             self.card_label.config(text=f"{self.game.previous_card}")
             self.score_label.config(text=f"Score: {self.game.score}")
         else:
