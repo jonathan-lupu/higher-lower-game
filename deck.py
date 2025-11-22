@@ -25,8 +25,6 @@ class Deck:
             for rank in ranks:
                 self.cards.append(Card(suit, rank))
 
-        print(f"cards have been generated there are {len(self.cards)} cards in the deck!")
-
     def shuffle(self):
         """
         Randomise the order of cards in the deck using the Fisher–Yates shuffle algorithm.

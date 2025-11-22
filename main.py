@@ -1,12 +1,12 @@
 import tkinter as tk
-from tkinter.constants import SUNKEN
-
 from game import Game
+
 
 class GameUI:
     def __init__(self, master):
-        self.bg_colour = "#2b2b2b"
-        self.orange_colour = "#ed712e"
+        # Colour variables
+        self.bg_colour = "#2b2b2b"  #Gray
+        self.orange_colour = "#ed712e"  #Orange
 
         self.master = master
         self.frame = tk.Frame(master, bg=self.bg_colour)
@@ -25,6 +25,15 @@ class GameUI:
             font=("Consolas", 16),
         )
         title.pack(pady=10)
+
+        # Help button
+        help_btn = tk.Button(
+            self.frame,
+            text="Help",
+            fg="blue",
+            command=lambda: self.help_msg()
+        )
+        help_btn.pack(pady=10, side="bottom", anchor="e")
 
         # Displays the card
         self.card_label = tk.Label(
@@ -48,7 +57,6 @@ class GameUI:
             command=lambda: self.make_guess("higher")
         )
         self.higher_btn.pack(side="left", padx=10)
-
 
         self.lower_btn = tk.Button(
             btn_frame,
@@ -86,8 +94,7 @@ class GameUI:
         """
         is_correct, msg = self.game.handle_guess(direction)
 
-
-        if is_correct:
+        if is_correct and not self.game.deck.is_empty():
             # Guess is correct and exits function
             self.result.config(text=msg)
             self.game.next_round()
@@ -113,9 +120,29 @@ class GameUI:
         self.frame.destroy()
         GameUI(self.master)
 
+    def help_msg(self):
+        """
+        Opens help popup to provide instructions to the user, using an overlay with tk.Toplevel
+        :return: None
+        """
+        overlay = tk.Toplevel(self.master)
+        overlay.transient(self.master)
+        overlay.grab_set()
+        overlay.overrideredirect(True)
+
+        # Gets measurements of master widgets
+        w = self.master.winfo_width()
+        h = self.master.winfo_height()
+        x = self.master.winfo_rootx()
+        y = self.master.winfo_rooty()
+
+        overlay.geometry(f"{w}x{h}+{x}+{y}")
+        dim = tk.Frame(overlay, bg="#000000")
+        # root.wm_attributes("-transparentcolor", "#000000")
+
 
 root = tk.Tk()
-root.geometry("400x300")
+root.geometry("400x350")
 root.resizable(width=False, height=False)
 GameUI(root)
 root.mainloop()

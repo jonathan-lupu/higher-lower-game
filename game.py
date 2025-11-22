@@ -51,7 +51,7 @@ class Game:
             bool: True if the guess is correct or the result is a draw; False otherwise.
         """
         # Answer by comparing the two cards: Higher, Lower, Draw
-        answer = self.compare()
+        answer = self.compare_cards()
 
         # If cards are equal value - keep playing, no change in score
         if answer == Result.DRAW:
@@ -69,7 +69,7 @@ class Game:
             msg = "Incorrect guess!"
             return False, msg
 
-    def compare(self):
+    def compare_cards(self):
         """
         Compare the current card to the previous card and determine the result.
 
@@ -98,6 +98,7 @@ class Game:
 
     def handle_input(self, action):
         """
+        DEPRECATED function not in use with GUI implementation.
         Prompt and validate user input based on game state.
 
         For in-game guesses, requests whether the next card is higher or lower
@@ -139,6 +140,7 @@ class Game:
 
     def game_loop(self):
         """
+        DEPRECATED function not in use with GUI implementation.
         Run the main game loop.
 
         Continuously prompts the player to guess whether the next card will be higher or lower.
@@ -156,19 +158,19 @@ class Game:
         """
         self.start_game()
         correct = True
-        # while correct and not self.deck.is_empty():
-        #     guess = self.handle_input("GUESS")
-        #     # Correct guess / draw
-        #     if self.handle_guess(guess):
-        #         self.next_round()
-        #     else:
-        #         correct = False
-        #         print("Sorry, incorrect guess.")
-        #         print(f"You scored {self.score} points.")
-        #         print(f"The card was {self.current_card}")
-        #         if self.handle_input("END") == "AGAIN":
-        #             print("Restarting...")
-        #             self.start_game()
-        #             correct = True
-        #         else:
-        #             print("Quitting game")
+        while correct and not self.deck.is_empty():
+            guess = self.handle_input("GUESS")
+            # Correct guess / draw
+            if self.handle_guess(guess):
+                self.next_round()
+            else:
+                correct = False
+                print("Sorry, incorrect guess.")
+                print(f"You scored {self.score} points.")
+                print(f"The card was {self.current_card}")
+                if self.handle_input("END") == "AGAIN":
+                    print("Restarting...")
+                    self.start_game()
+                    correct = True
+                else:
+                    print("Quitting game")
