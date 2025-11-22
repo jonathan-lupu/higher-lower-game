@@ -7,10 +7,12 @@ class Card:
 
 
     def set_value(self, rank : str):
-        """Sets internal value to int for comparison
+        """
+        Sets internal value to int for comparison
             :param: rank : str - rank of the card e.g. Ace, 1, 3, King
             :return: None - sets attribute
-            """
+        """
+
         match rank:
             case "King":
                 self.value = 13
