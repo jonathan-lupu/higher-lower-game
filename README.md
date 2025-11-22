@@ -5,9 +5,9 @@
 </p>
 
 ## How to start
-1. Download the repo
-2. Navigate into the folder
-3. Run the command `python main.py`
+1. Clone the repository.
+2. Enter the project directory.
+3. Execute: `python main.py`
 
 ## How to play
 - A card will be shown
