@@ -102,6 +102,7 @@ class GameUI:
         :return:None
         """
         is_correct, msg = self.game.handle_guess(direction)
+        self.score_label.config(text=f"Score: {self.game.score}")
 
         if is_correct and not self.game.deck.is_empty():
             # Guess is correct and exits function
@@ -109,12 +110,16 @@ class GameUI:
             self.game.next_round()
             self.high_score_label.config(text=f"High Score: {self.game.high_score}")
             self.card_label.config(text=f"{self.game.previous_card}")
-            self.score_label.config(text=f"Score: {self.game.score}")
         else:
-            # Guess is incorrect - allow restart
+            # Guess is incorrect or empty deck
             self.higher_btn.config(state="disabled")
             self.lower_btn.config(state="disabled")
-            self.result.config(text=msg)
+
+            # Correctness takes precedence over empty deck
+            if not is_correct:
+                self.result.config(text=msg)
+            else:
+                self.result.config(text="Game Over - No cards left.")
 
             # sets highscore
             self.game.set_high_score()

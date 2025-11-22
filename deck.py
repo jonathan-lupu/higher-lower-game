@@ -46,7 +46,10 @@ class Deck:
         :return:
             Card: The card drawn from the top of the deck.
         """
-        return self.cards.pop()
+        if not self.is_empty():
+            return self.cards.pop()
+        else:
+            return None
 
     def is_empty(self):
         """

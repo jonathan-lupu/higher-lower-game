@@ -105,7 +105,6 @@ class Game:
         """
         self.set_high_score()
         self.previous_card = self.current_card
-        self.current_card = self.deck.draw()
 
     def set_high_score(self):
         """
