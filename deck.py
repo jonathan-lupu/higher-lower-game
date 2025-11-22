@@ -18,7 +18,7 @@ class Deck:
             :return:
                 None
         """
-        suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades']
+        suits = ['♣', '♦', '♥', '♠']
         ranks = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
 
         for suit in suits:
@@ -38,7 +38,7 @@ class Deck:
             None
         """
         for i in range(len(self.cards)-1 ,0, -1):
-            j = random.randint(0,i + 1)
+            j = random.randint(0,i)
             self.cards[i], self.cards[j] = self.cards[j], self.cards[i]
 
     def draw(self):

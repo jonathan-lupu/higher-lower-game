@@ -59,11 +59,11 @@ class Game:
             return True,msg
         if answer == Result.HIGHER and guess == "higher":
             self.score +=1
-            msg = f"Correct guess! The card was {self.current_card}"
+            msg = f"Correct guess!"
             return True,msg
         elif answer == Result.LOWER and guess == "lower":
             self.score +=1
-            msg = f"Correct guess! The card was {self.current_card}"
+            msg = f"Correct guess!"
             return True,msg
         else:
             msg = "Incorrect guess!"

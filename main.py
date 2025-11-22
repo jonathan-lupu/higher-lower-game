@@ -1,58 +1,115 @@
-from game import Game
 import tkinter as tk
-
-game = Game()
-# game.game_loop()
+import tkinter.font as tkFont
+from game import Game
 
 class GameUI:
     def __init__(self, master):
+        self.bg_colour = "#2b2b2b"
+        self.orange_colour = "#ed712e"
+
+        self.master = master
+        self.frame = tk.Frame(master, bg=self.bg_colour)
+        self.frame.pack(fill="both", expand=True)
+
+        self.master.title("Higher or Lower")
+
         self.game = Game()
         self.game.start_game()
-        self.master = master
-        self.master.title("Higher or Lower game")
 
+        title = tk.Label(
+            self.frame,
+            text="Higher or Lower",
+            fg="white",
+            bg=self.bg_colour,
+            font=("Consolas", 16)
+        )
+        title.pack(pady=10)
 
-        self.label = tk.Label(master, text=f"Card: {self.game.previous_card}")
-        self.label.pack(pady=10)
+        # Displays the card
+        self.card_label = tk.Label(
+            self.frame,
+            text=f"{self.game.previous_card}",
+            fg=self.orange_colour,
+            bg=self.bg_colour,
+            font=("Consolas", 32)
+        )
+        self.card_label.pack(pady=20)
 
-        self.result = tk.Label(master, text="Make a guess")
-        self.result.pack()
+        btn_frame = tk.Frame(self.frame, bg=self.bg_colour)
+        btn_frame.pack(pady=10)
 
-        self.higher_btn = tk.Button(master, text="Higher", command=lambda: self.make_guess("higher",master))
-        self.higher_btn.pack(side="left", padx=5)
+        self.higher_btn = tk.Button(
+            btn_frame,
+            text="Higher",
+            width=10,
+            command=lambda: self.make_guess("higher")
+        )
+        self.higher_btn.pack(side="left", padx=10)
 
-        self.lower_btn = tk.Button(master, text="Lower", command=lambda: self.make_guess("lower", master))
-        self.lower_btn.pack(side="right", padx=5)
+        self.lower_btn = tk.Button(
+            btn_frame,
+            text="Lower",
+            width=10,
+            command=lambda: self.make_guess("lower")
+        )
+        self.lower_btn.pack(side="left", padx=10)
 
-    def make_guess(self, direction, master):
+        self.result = tk.Label(
+            self.frame,
+            text="Make a guess",
+            fg="white",
+            bg=self.bg_colour,
+            font=("Consolas", 12)
+        )
+        self.result.pack(pady=10)
+
+        self.score_label = tk.Label(
+            self.frame,
+            text="Score: 0",
+            fg=self.orange_colour,
+            bg=self.bg_colour,
+            font=("Consolas", 12)
+        )
+        self.score_label.pack(pady=5)
+
+    def make_guess(self, direction):
+        """
+        handles the button the user clicks and works through the logic given the direction
+        :param direction: higher or lower depending on button pressed
+        :return:None
+        """
         is_correct, msg = self.game.handle_guess(direction)
+
+
         if is_correct:
+            # Guess is correct and exits function
             self.result.config(text=msg)
-            print(msg)
-            print(self.game.previous_card)
             self.game.next_round()
-            self.label.config(text=f"Card: {self.game.previous_card}")
-            self.result.config(text=f"{msg} | Score: {self.game.score}")
-
+            self.card_label.config(text=f"{self.game.previous_card}")
+            self.score_label.config(text=f"Score: {self.game.score}")
         else:
-
+            # Guess is incorrect - allow restart
             self.higher_btn.config(state="disabled")
             self.lower_btn.config(state="disabled")
             self.result.config(text=msg)
-            self.restart_btn = tk.Button(master, text="Restart Game", command=lambda: self.restart())
-            self.restart_btn.pack(side="bottom", padx=5)
+
+            tk.Button(
+                self.frame,
+                text="Restart Game",
+                command=self.restart
+            ).pack(side="bottom", padx=5)
 
     def restart(self):
-        self.game.start_game()
-        self.higher_btn.config(state="active")
-        self.lower_btn.config(state="active")
-        self.label.config(text=f"Card: {self.game.previous_card}")
+        """
+        restarts the game by redrawing GUI
+        :return: None
+        """
+        self.frame.destroy()
+        GameUI(self.master)
 
 
 root = tk.Tk()
+root.geometry("300x300")
+root.resizable(width=False, height=False)
 GameUI(root)
 root.mainloop()
-
-
-
-

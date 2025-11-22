@@ -29,7 +29,7 @@ class Card:
         Returns string representation of card
         :return: str in format of "rank" of "suit" e.g. Ace of Hearts
         """
-        return f"{self.rank} of {self.suit}"
+        return f"{self.rank} {self.suit}"
 
     def get_comparison_value(self):
         """
