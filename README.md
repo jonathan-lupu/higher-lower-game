@@ -1,5 +1,9 @@
 # higher-lower-game
-[[image of game]]
+
+<p align="center">
+  <img src="game-overview.png" width="300">
+</p>
+
 ## How to start
 1. Download the repo
 2. Navigate into the folder
@@ -45,7 +49,12 @@ The Fisher-Yates algorithm was chosen for its simplicity, efficiency, and unifor
 
 ## Design decisions
 The following diagram was created with CLI implementation in mind; therefore, some functions have been deprecated once the GUI was integrated. 
-!![[image]]
+
+
+<p align="center">
+  <img src="higher-lower-design.png" width="300">
+</p>
+
 ### Card
 A card class was created to represent a physical game card. 
 This class contains information about the card:
