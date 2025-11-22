@@ -5,8 +5,8 @@
 </p>
 
 ## How to start
-1. Clone the repository.
-2. Enter the project directory.
+1. Clone the repository
+2. Enter the project directory
 3. Execute: `python main.py`
 
 ## How to play
@@ -68,7 +68,7 @@ Additionally, this class contains the methods:
 
 ### Deck
 This class represents a physical deck of cards. The only data it holds is the list of cards. However, it has some useful methods:
-- generate: Creates the deck by populating the list of cards with the 52 cards.
+- generate: Creates the deck by populating the list of cards with the 52 cards
 - shuffle: Runs the Fisher-Yates algorithm to shuffle the deck of cards
 - draw: takes the top card in the deck
 - reset: resets the deck to an empty list
@@ -77,12 +77,13 @@ This class represents a physical deck of cards. The only data it holds is the li
 ### Game
 This class handles the game logic. It stores the deck instance, score, the current card (card being compared with), and the previous card (card being compared to). 
 Additionally, this class also makes use of the Result Enum, created to help make the comparison between cards more secure and stable. 
+
 The Game class holds crucial game logic functions, including:
-- start_game: Sets up the game, called at the start of the game and when restarting. Resets the deck and configures the deck with shuffled cards.
-- handle_guess: Evaluates the player's guess against the actual card comparison result.
-- compare_cards: Compares the current card to the previous card and determines the result.
-- next_round (not in diagram): An additional function added during the development phase, which updates the previous card to the current card and draws a new card from the deck.
-- play_game_loop: This function was designed to handle the game loop, prompting the user to enter input; however, this was deprecated after the GUI implementation.
+- start_game: Sets up the game, called at the start of the game and when restarting, resets the deck and configures the deck with shuffled cards
+- handle_guess: Evaluates the player's guess against the actual card comparison result
+- compare_cards: Compares the current card to the previous card and determines the result
+- next_round (not in diagram): An additional function added during the development phase, which updates the previous card to the current card and draws a new card from the deck
+- play_game_loop: This function was designed to handle the game loop, prompting the user to enter input; however, this was deprecated after the GUI implementation
 
 ## Additional Features
 The game uses a GUI which allows the user to have straightforward and streamlined interactions with the game, making it more enjoyable to play. It includes a helpful overlay that provides clear instructions on playing 'Higher or Lower', making it accessible to new players. Lastly, the game also has the ability to store the historical high score, encouraging players to beat previous records and adding a competitive edge that boosts replay value.
@@ -92,6 +93,6 @@ New features could be created to make the game more enjoyable and increase its r
 
 There are some improvements that could be made to improve the game.
 Such improvements include:
-- Usability: Improving error handling to ensure players can keep playing in the face of errors, and introducing key bindings to allow for faster and smoother gameplay.
-- Accessibility: Improving contrast between colours, making scalable text to allow for improved readability, and screen-reader compatibility to allow visually impaired users to play. 
-- Tamper-resistant data: Ensuring high score text file cannot be tampered with and shows false scores.
+- Usability: Improving error handling to ensure players can keep playing in the face of errors, and introducing key bindings to allow for faster and smoother gameplay
+- Accessibility: Improving contrast between colours, making scalable text to allow for improved readability, and screen-reader compatibility to allow visually impaired users to play
+- Tamper-resistant data: Ensuring high score text file cannot be tampered with and shows false scores
