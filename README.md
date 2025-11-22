@@ -5,7 +5,7 @@
 </p>
 
 ## Prerequisite 
-- Python3, Tested with version 3.13.5
+- Python3, tested with version 3.13.5
 ### Packages
 - Tkinter for the GUI, tested using TKinter 8.6.16
 
@@ -39,11 +39,12 @@ The algorithm works by doing the following:
 
 ### Evaluation of Shuffling Algorithm
 The Fisher-Yates algorithm is a very popular algorithm due to its simplicity, efficiency, uniformity, and space complexity.
+
 #### Simplicity
 The algorithm is very simple to implement using only a few short lines; additionally, it is very easy to understand what processes take place. 
 
 #### Efficiency
-This algorithm shuffles the deck in one pass, which in turn results in a time complexity of O(n), looping through the deck one time to shuffle the cards. However, we know that as the deck will always have 52 cards, the actual time complexity is O(1). 
+This algorithm shuffles the deck in one pass, which in turn results in a time complexity of O(n), looping through the deck one time to shuffle the cards. 
 
 #### Uniformity
 The
