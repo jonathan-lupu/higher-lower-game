@@ -4,8 +4,9 @@
   <img src="game-overview.png" width="300">
 </p>
 
-## Prerequisite 
+## Prerequisites
 - Python3, tested with version 3.13.5
+- High score is written to a local file in the working folder (highscore.txt) which would require write access permissions in the working folder
 ### Packages
 - Tkinter for the GUI, tested using TKinter 8.6.16
 
@@ -100,7 +101,7 @@ The Game class holds crucial game logic functions, including:
 ## Additional Features
 The game uses a GUI (implemented using TKinter) which allows the user to have straightforward and streamlined interactions with the game, making it more enjoyable to play. 
 The game includes a helpful overlay that provides clear instructions on playing 'Higher or Lower', making it accessible to new players. 
-Lastly, the game also has the ability to store the historical high score, encouraging players to beat previous records and adding a competitive edge that boosts replay value.
+Lastly, the game also has the ability to store the historical high score by writing to an external file (highscore.txt), encouraging players to beat previous records and adding a competitive edge that boosts replay value.
 
 ## Future Improvements
 New features could be created to make the game more enjoyable and increase its replayability, such as providing different game modes, for example, guessing the next suit along with higher or lower. 
