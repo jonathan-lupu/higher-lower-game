@@ -107,4 +107,5 @@ There are some improvements that could be made to improve the game.
 Such improvements include:
 - Usability: Improving error handling to ensure players can keep playing in the face of errors, and introducing key bindings to allow for faster and smoother gameplay
 - Accessibility: Improving contrast between colours, making scalable text to allow for improved readability, and screen-reader compatibility to allow visually impaired users to play
-- Tamper-resistant data: Ensuring high score text file cannot be tampered with and shows false scores
+- Tamper-resistant data: Ensuring high score text file cannot be tampered with and show false scores
+- File Handling: Currently only handling FileNotFoundError, however, need to consider empty files, invalid value stored in the file, and any IO errors when reading the file
