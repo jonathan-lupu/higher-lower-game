@@ -98,7 +98,9 @@ The Game class holds crucial game logic functions, including:
 - play_game_loop: This function was designed to handle the game loop, prompting the user to enter input; however, this was deprecated after the GUI implementation
 
 ## Additional Features
-The game uses a GUI which allows the user to have straightforward and streamlined interactions with the game, making it more enjoyable to play. It includes a helpful overlay that provides clear instructions on playing 'Higher or Lower', making it accessible to new players. Lastly, the game also has the ability to store the historical high score, encouraging players to beat previous records and adding a competitive edge that boosts replay value.
+The game uses a GUI (implemented using TKinter) which allows the user to have straightforward and streamlined interactions with the game, making it more enjoyable to play. 
+The game includes a helpful overlay that provides clear instructions on playing 'Higher or Lower', making it accessible to new players. 
+Lastly, the game also has the ability to store the historical high score, encouraging players to beat previous records and adding a competitive edge that boosts replay value.
 
 ## Future Improvements
 New features could be created to make the game more enjoyable and increase its replayability, such as providing different game modes, for example, guessing the next suit along with higher or lower. 

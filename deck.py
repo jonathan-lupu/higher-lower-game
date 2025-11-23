@@ -13,7 +13,7 @@ class Deck:
             Optionally includes jokers if specified.
 
             :param:
-                include_joker (bool): Whether to include jokers in the deck. Defaults to False.
+                include_joker (bool): Whether to include jokers in the deck. Defaults to False. (Not implemented yet)
 
             :return:
                 None
